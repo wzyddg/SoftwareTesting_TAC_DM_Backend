@@ -4,7 +4,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import com.TAC.test.SuccessTimer;
+
 public class DMMainServer {
+	
+	public static int totalAccept = 1;
+	public static int totalSuccess = 1;
+	
 	public void startServer(int port) {
 		try {
 			// Create socket for TCP
@@ -17,6 +23,7 @@ public class DMMainServer {
 			while (true) {
 				//Second socket for data 
 				Socket client = server.accept();
+				DMMainServer.totalAccept++;
 				DMService service=new DMService(client);
 				Thread serviceThread = new Thread(service);
 				serviceThread.start();
@@ -28,8 +35,12 @@ public class DMMainServer {
 	}
 	
 	public static void main(String[] args) {
+//		SuccessTimer timer = new SuccessTimer();
+//		Thread timerThread = new Thread(new SuccessTimer());
+//		timerThread.start();
 		DMMainServer server = new DMMainServer();
 		server.startServer(7527);
+		
 		//7527 for this 
 	}
 

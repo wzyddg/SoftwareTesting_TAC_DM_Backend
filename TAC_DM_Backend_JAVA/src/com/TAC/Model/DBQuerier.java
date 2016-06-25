@@ -16,7 +16,7 @@ public class DBQuerier {
 	static SessionFactory sessionFactory;
 	static Configuration configuration;
 
-	private static Session sessionStart() {
+	private synchronized static Session sessionStart() {
 		if (sessionFactory == null) {
 			configuration = new Configuration().configure();
 			StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
@@ -134,7 +134,8 @@ public class DBQuerier {
 		query.setInteger(0, itemIdInt);
 		String result = "[";
 		Iteminfo iteminfo = (Iteminfo) query.uniqueResult();
-
+		if(iteminfo.type.equals("admin_password"))
+			return "[]";
 		if (iteminfo != null) {
 			result = result + iteminfo.id + "," + iteminfo.name + "," + iteminfo.description + "," + iteminfo.type + "," + iteminfo.count + "," + iteminfo.leftcount;
 		}
@@ -369,7 +370,8 @@ public class DBQuerier {
 		result += "]";
 		return result;
 	}
-
+	
+//	[itemID,itemCount]
 	public static String editLeftNumber(String command) {
 		Session session = sessionStart();
 		Transaction tx = session.beginTransaction();
@@ -401,6 +403,7 @@ public class DBQuerier {
 		return "[" + resInt + "]";
 	}
 	
+//	[itemID,itemCount]
 	public static String editTotalNumber(String command) {
 		Session session = sessionStart();
 		Transaction tx = session.beginTransaction();
@@ -439,13 +442,9 @@ public class DBQuerier {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String result = "";
-//		result = DBQuerrier.getDeviceList("apple");
-//		 result = getTypeList();
-//		 result = DBQuerrier.borrowItem("huoteng,1234,,《2015我想和懵逼谈谈》,《2015我想和懵逼谈谈》,1");
-		// result = DBQuerrier.getDeviceList("ios");
-		 result = getDeviceList("book");
-				 
 		 
+		result = getDeviceList("");
+				 
 		System.out.println(result);
 	}
 
