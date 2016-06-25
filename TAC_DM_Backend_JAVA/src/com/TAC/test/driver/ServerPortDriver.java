@@ -10,7 +10,7 @@ import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 public class ServerPortDriver {
-	static String fileNameString = "C:\\Users\\wzy\\Desktop\\用例集\\UT_001_FUN_001.csv";
+	static String fileNameString = "C:\\Users\\wzy\\Desktop\\1.1结果用例集\\UT_001_FUN_001.csv";
 	
 	public static void main(String[] args) throws Exception {
 		DMMainServer server = new DMMainServer();
@@ -24,15 +24,15 @@ public class ServerPortDriver {
 				record[i] = reader.get(i);
 			}
 			recordStrings.add(record);
-			
+			boolean resBool = false;
 			try {
-				server.registPort(Integer.parseInt(record[3]));
+				resBool = server.registPort(Integer.parseInt(record[3]));
 			} catch (Exception e) {
 				// TODO: handle exception
-				record[5] = ""+false;
+//				record[5] = ""+resBool;
 				continue;
 			}
-			record[5] = ""+true;
+			record[5] = ""+resBool;
 		}// save old over
 		reader.close();
 		

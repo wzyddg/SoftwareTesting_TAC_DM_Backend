@@ -11,7 +11,7 @@ import com.csvreader.CsvWriter;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 public class DMServiceExecuteDriver {
-	static String fileNameString = "C:\\Users\\wzy\\Desktop\\1.0结果用例集\\UT_002_FUN_002.csv";
+	static String fileNameString = "C:\\Users\\wzy\\Desktop\\1.1结果用例集\\UT_002_FUN_002.csv";
 	
 	public static void main(String[] args) throws Exception {
 		DMService service = new DMService(null);

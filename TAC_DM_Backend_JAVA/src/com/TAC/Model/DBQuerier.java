@@ -134,7 +134,8 @@ public class DBQuerier {
 		String result = "[";
 		Iteminfo iteminfo = (Iteminfo) query.uniqueResult();
 		//TODO: found bug : null pointer
-		if(iteminfo.type.equals("admin_password"))
+		//fixed bug
+		if("admin_password".equals(iteminfo.type))
 			return "[]";
 		if (iteminfo != null) {
 			result = result + iteminfo.id + "," + iteminfo.name + "," + iteminfo.description + "," + iteminfo.type + "," + iteminfo.count + "," + iteminfo.leftcount;
@@ -293,6 +294,10 @@ public class DBQuerier {
 		int Count = 0;
 
 		//TODO: found bug: not check the number of substring
+		//fixed bug
+		if(parars.length<4)
+			return "[0]";
+		
 		if(parars[0].length()<1||parars[1].length()<1||parars[2].length()<1||parars[3].length()<1){
 			System.out.println("problem0:empty para");
 			return "[0]";

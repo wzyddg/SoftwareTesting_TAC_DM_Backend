@@ -13,13 +13,13 @@ public class DMMainServer {
 	public static int totalSuccess = 1;
 	ServerSocket server;
 	
-	public void registPort(int port) {
+	public boolean registPort(int port) {
 		try {
 			// Create socket for TCP
 			
 			//fixed bug
 			if(port<0||port>65535)
-				port = 7527;
+				return false;
 			// TODO: found bug: port number out of range
 			server = new ServerSocket(port);	//8222 
 			System.out.println("TAC-DM Server Start, waitng on Port "
@@ -27,7 +27,9 @@ public class DMMainServer {
 	
 		} catch (IOException ioe) {
 			System.out.println(ioe);
+			
 		}
+		return true;
 	}
 	
 	public void start() throws IOException {
