@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-8-30 16:35:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.TAC.Model.Borrowrecord" table="borrowrecord" catalog="tacdm" optimistic-lock="version">
+        <id name="recordId" type="java.lang.Integer">
+            <column name="recordId" />
+            <generator class="identity" />
+        </id>
+        <property name="borrowerName" type="string">
+            <column name="borrowerName" length="32" not-null="true" />
+        </property>
+        <property name="tele" type="string">
+            <column name="tele" length="32" not-null="true" />
+        </property>
+        <property name="itemId" type="int">
+            <column name="itemId" not-null="false" />
+        </property>
+        <property name="itemName" type="string">
+            <column name="ItemName" length="32" not-null="true" />
+        </property>
+        <property name="itemInfo" type="string">
+            <column name="itemInfo" length="128" not-null="true" />
+        </property>
+        <property name="borrowDate" type="timestamp">
+            <column name="borrowDate" length="19" not-null="true" />
+        </property>
+        <property name="returnDate" type="timestamp">
+            <column name="returnDate" length="19" not-null="false" />
+        </property>
+        <property name="number" type="int">
+            <column name="number" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
