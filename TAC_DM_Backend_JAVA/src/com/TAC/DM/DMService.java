@@ -25,7 +25,7 @@ public class DMService implements Runnable {
 		try {
 			request = command.substring(1, command.length() - 1);
 			result = "";
-//			System.out.println(request);
+			
 			switch (request.split("|")[0]) {
 			case "1":
 				System.out.println(request.split("|")[0]);
@@ -73,7 +73,9 @@ public class DMService implements Runnable {
 			e.printStackTrace();
 			return "[]";
 		}
-		System.out.println("Result:"+result);
+//		System.out.println("Result:"+result);
+		DMMainServer.totalSuccess++;
+		
 		return result;
 	}
 
@@ -81,7 +83,6 @@ public class DMService implements Runnable {
 	public void run() {
 		
 		try {
-			DBQuerier aDbQuerier = new DBQuerier();
 			
 			System.out.println("---start Service----");
 			in = new BufferedReader(new InputStreamReader(

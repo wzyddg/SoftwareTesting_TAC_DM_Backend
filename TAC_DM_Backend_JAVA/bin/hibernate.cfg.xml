@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">wzyddg</property>
+  <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/tacdm?useUnicode=true&amp;characterEncoding=UTF-8</property>
+  <property name="hibernate.connection.username">wzyddg</property>
+  <!-- <property name="hibernate.connection.password">wangzeyuwoaini</property>
+  <property name="hibernate.connection.url">jdbc:mysql://5649d5302354d.sh.cdb.myqcloud.com:3962/tacNBDM?useUnicode=true&amp;characterEncoding=UTF-8</property>
+  <property name="hibernate.connection.username">xiaoyu</property> -->
+  <!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+  <mapping resource="com/TAC/Model/Borrowrecord.hbm.xml"/>
+  <mapping resource="com/TAC/Model/Iteminfo.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

@@ -1,4 +1,4 @@
-package com.TAC.test;
+package com.TAC.test.stub;
 
 public class DBQuerier {
 

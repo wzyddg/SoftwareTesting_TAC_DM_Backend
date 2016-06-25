@@ -31,7 +31,7 @@ public class DBQuerier {
 		String hql = "from Iteminfo where type like ? ";
 //		String hql = "from Iteminfo where type = ? ";
 		Query query = ((SharedSessionContract) session).createQuery(hql);
-		query.setString(0, type + '%');
+		query.setString(0, type + "%");
 //		query.setString(0, type );
 		String result = "[";
 		List<Iteminfo> infos = query.list();
@@ -128,12 +128,12 @@ public class DBQuerier {
 		try {
 			itemIdInt = Integer.parseInt(itemId);
 		} catch (Exception e) {
-			// TODO: handle exception
 			return "[]";
 		}
 		query.setInteger(0, itemIdInt);
 		String result = "[";
 		Iteminfo iteminfo = (Iteminfo) query.uniqueResult();
+		//TODO: found bug : null pointer
 		if(iteminfo.type.equals("admin_password"))
 			return "[]";
 		if (iteminfo != null) {
@@ -152,7 +152,7 @@ public class DBQuerier {
 		try {
 			recordIdInt = Integer.parseInt(recordId);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			return "[]";
 		}
 		query.setInteger(0, recordIdInt);
@@ -184,7 +184,7 @@ public class DBQuerier {
 		try {
 			borrowCount = Integer.parseInt(parars[5]);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			System.out.println("problem1:para error");
 			return "[0]";
 		}
@@ -215,7 +215,7 @@ public class DBQuerier {
 		try {
 			session.save(br);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			System.out.println("problem3:save error,maybe null properties");
 			return "[0]";
 		}
@@ -242,7 +242,7 @@ public class DBQuerier {
 			borrowCount = Integer
 					.parseInt((paras[paras.length - 1].substring(0, paras[paras.length - 1].length() - 1)));
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 		}
 		System.out.println("borCount:" + borrowCount);
 		Session session = sessionStart();
@@ -255,7 +255,7 @@ public class DBQuerier {
 		try {
 			recordIdInt = Integer.parseInt(recordId);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			return "[0]";
 		}
 		Date currenTimeDate = new Date();
@@ -292,6 +292,7 @@ public class DBQuerier {
 		Iteminfo ii = null ;
 		int Count = 0;
 
+		//TODO: found bug: not check the number of substring
 		if(parars[0].length()<1||parars[1].length()<1||parars[2].length()<1||parars[3].length()<1){
 			System.out.println("problem0:empty para");
 			return "[0]";
@@ -300,7 +301,7 @@ public class DBQuerier {
 		try {
 			Count = Integer.parseInt(parars[3]);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			System.out.println("problem1:para error");
 			return "[0]";
 		}
@@ -317,7 +318,7 @@ public class DBQuerier {
 		try {
 			session.save(ii);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			System.out.println("problem3:save error,maybe null properties");
 			return "[0]";
 		}
@@ -387,7 +388,7 @@ public class DBQuerier {
 			itemId = Integer.parseInt(coms[0]);
 			itemCount = Integer.parseInt(coms[1]);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			return "[0]";
 		}
 
@@ -419,7 +420,7 @@ public class DBQuerier {
 			itemId = Integer.parseInt(coms[0]);
 			itemCount = Integer.parseInt(coms[1]);
 		} catch (Exception e) {
-			// TODO: handle exception
+			 
 			return "[0]";
 		}
 
@@ -440,10 +441,9 @@ public class DBQuerier {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String result = "";
 		 
-		result = getDeviceList("");
+		result = getDeviceList("umbrell");
 				 
 		System.out.println(result);
 	}
