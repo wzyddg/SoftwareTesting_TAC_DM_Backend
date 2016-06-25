@@ -9,7 +9,7 @@ import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 public class AddItemDriver {
-	static String fileNameString = "C:\\Users\\wzy\\Desktop\\1.0结果用例集\\UT_003_FUN_010.csv";
+	static String fileNameString = "C:\\Users\\wzy\\Desktop\\1.2结果用例集\\UT_003_FUN_010.csv";
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub

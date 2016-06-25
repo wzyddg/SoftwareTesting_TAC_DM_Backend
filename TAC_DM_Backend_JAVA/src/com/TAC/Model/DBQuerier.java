@@ -135,9 +135,10 @@ public class DBQuerier {
 		Iteminfo iteminfo = (Iteminfo) query.uniqueResult();
 		//TODO: found bug : null pointer
 		//fixed bug
-		if("admin_password".equals(iteminfo.type))
-			return "[]";
+		
 		if (iteminfo != null) {
+			if("admin_password".equals(iteminfo.type))
+				return "[]";
 			result = result + iteminfo.id + "," + iteminfo.name + "," + iteminfo.description + "," + iteminfo.type + "," + iteminfo.count + "," + iteminfo.leftcount;
 		}
 		result += "]";
