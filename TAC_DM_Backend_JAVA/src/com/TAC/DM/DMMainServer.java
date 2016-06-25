@@ -17,6 +17,9 @@ public class DMMainServer {
 		try {
 			// Create socket for TCP
 			
+			//fixed bug
+			if(port<0||port>65535)
+				port = 7527;
 			// TODO: found bug: port number out of range
 			server = new ServerSocket(port);	//8222 
 			System.out.println("TAC-DM Server Start, waitng on Port "
